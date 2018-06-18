@@ -14,3 +14,9 @@ If you'd like to specify a different path, run:
 ```bash
 conda env create –f environment.yml –p <other path>
 ```
+
+To activate this environment, run:
+
+```bash
+source activate bhtune
+```
