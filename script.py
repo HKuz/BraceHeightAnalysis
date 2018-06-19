@@ -29,7 +29,7 @@ def mov_to_wav():
             continue
 
         src_file = source_path + filename
-        dest_file = dest_path + filename[:-3] + ".wav"
+        dest_file = dest_path + filename[:-3] + "wav"
         command = "ffmpeg -i {} -ab 160k -ac 2 -ar 44100 -vn {}".format(
             src_file, dest_file)
         subprocess.call(command, shell=True)
