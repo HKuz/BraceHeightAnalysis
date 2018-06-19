@@ -1,5 +1,5 @@
 #!/usr/local/bin/python
-# Run script once to convert the .MOV video files into audio mp3 files
+# Run script once to convert the .MOV video files into audio files
 
 import os
 import moviepy.editor as mp
