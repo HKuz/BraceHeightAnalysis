@@ -20,3 +20,5 @@ To activate this environment, run:
 ```bash
 source activate bhtune
 ```
+
+This project also uses [FFmpeg](https://ffmpeg.org) software to convert video files to .WAV format.
