@@ -11,7 +11,7 @@ def main():
     source_dir = "./WAVFiles/"
 
     plt.figure(figsize=(12, 12))
-    index = 1
+    plot_index = 1
     for filename in os.listdir(source_dir):
         if filename == ".DS_Store":
             continue
@@ -20,18 +20,29 @@ def main():
             # Extract Raw Audio from File
             signal = spf.readframes(-1)
             signal = np.fromstring(signal, "Int16")
-            fs = spf.getframerate()  # sampling frequency
+            # fs = spf.getframerate()  # sampling frequency
 
-        time = np.linspace(0, len(signal) / fs, num=len(signal))
+            # Split the data into channels
+            channels = [[] for channel in range(spf.getnchannels())]
+            for index, datum in enumerate(signal):
+                channels[index % len(channels)].append(datum)
 
-        plt.subplot(3, 3, index)
+            # Get time from indices
+            fs = spf.getframerate()
+            time = np.linspace(0, len(signal) / len(channels) / fs,
+                               num=len(signal) / len(channels))
+
+        # time = np.linspace(0, len(signal) / fs, num=len(signal))
+
+        plt.subplot(3, 3, plot_index)
         plt.tight_layout()
         plt.title("Signal: {}".format(filename[2:-4]))
-        plt.axis(ymin=5000, ymax=9000)
-        plt.plot(time, signal)
-        index += 1
+        plt.axis(ymin=-9000, ymax=9000)
+        for channel in channels:
+            plt.plot(time, channel)
+        plot_index += 1
 
-    plt.savefig("SignalWavePlotsTopTight.pdf")
+    plt.savefig("ChannelSignalWavePlots.pdf")
     plt.show()
     plt.clf()
 
