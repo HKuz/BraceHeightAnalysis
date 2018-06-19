@@ -1,20 +1,43 @@
 #!/usr/local/bin/python
-# Script to convert original .MOV video files to both .mp3 and .WAV audio files
+# Script to convert original .MOV video files to both .MP3 and .WAV audio files
 
 import os
 import subprocess
-import moviepy.editor as mp
+# import moviepy.editor as mp
 
 
 def main():
-    # command = "ffmpeg -i C:/test.mp4 -ab 160k -ac 2 -ar 44100 -vn audio.wav"
-    # subprocess.call(command, shell=True)
-    mov_to_mp3()
+    # Create wav files from videos (run once)
+    mov_to_wav()
+
+    # Create mp3 files from videos (run once)
+    # mov_to_mp3()
+
+
+def mov_to_wav():
+    """
+    Uses subprocess to run ffmpeg commands in the shell to convert original
+        .MOV files to .WAV audio files
+    """
+    source_dir = "./SourceFiles/"
+    source_path = os.path.abspath(source_dir) + "/"
+    dest_path = os.path.abspath("./WAVFiles") + "/"
+
+    for filename in os.listdir(source_dir):
+        print(filename)
+        if filename == ".DS_Store":
+            continue
+
+        src_file = source_path + filename
+        dest_file = dest_path + filename[:-3] + ".wav"
+        command = "ffmpeg -i {} -ab 160k -ac 2 -ar 44100 -vn {}".format(
+            src_file, dest_file)
+        subprocess.call(command, shell=True)
 
 
 def mov_to_mp3():
     """
-    Uses moviepy library to convert original .MOV files to .mp3 audio files
+    Uses moviepy library to convert original .MOV files to .MP3 audio files
     """
     source_dir = "./SourceFiles/"
     source_path = os.path.abspath(source_dir) + "/"
