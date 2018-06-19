@@ -20,29 +20,29 @@ def main():
             # Extract Raw Audio from File
             signal = spf.readframes(-1)
             signal = np.fromstring(signal, "Int16")
-            # fs = spf.getframerate()  # sampling frequency
 
             # Split the data into channels
-            channels = [[] for channel in range(spf.getnchannels())]
-            for index, datum in enumerate(signal):
-                channels[index % len(channels)].append(datum)
+            # channels = [[] for channel in range(spf.getnchannels())]
+            # for index, datum in enumerate(signal):
+            #     channels[index % len(channels)].append(datum)
 
             # Get time from indices
-            fs = spf.getframerate()
-            time = np.linspace(0, len(signal) / len(channels) / fs,
-                               num=len(signal) / len(channels))
-
-        # time = np.linspace(0, len(signal) / fs, num=len(signal))
+            fs = spf.getframerate()  # sampling frequency
+            time = np.linspace(0, len(signal) / fs, num=len(signal))
+            # Channel time calculation
+            # time = np.linspace(0, len(signal) / len(channels) / fs,
+            #                    num=len(signal) / len(channels))
 
         plt.subplot(3, 3, plot_index)
         plt.tight_layout()
         plt.title("Signal: {}".format(filename[2:-4]))
         plt.axis(ymin=-9000, ymax=9000)
-        for channel in channels:
-            plt.plot(time, channel)
+        plt.plot(time, signal)
+        # for channel in channels:
+        #     plt.plot(time, channel)
         plot_index += 1
 
-    plt.savefig("ChannelSignalWavePlots.pdf")
+    plt.savefig("SignalWavePlots.pdf")
     plt.show()
     plt.clf()
 
