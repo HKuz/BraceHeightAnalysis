@@ -3,7 +3,7 @@
 This analysis uses Python to compare the recorded sound differences shooting my bow at different brace heights within its optimal range.
 
 
-This project uses an [Anaconda](www.anaconda.com) environment to house all necessary Python packages, versions, and dependencies. These are listed in the `environment.yml` file. After you've forked and cloned this project to your local machine, you can recreate this environment in your default path by running the following command:
+The project uses an [Anaconda](www.anaconda.com) environment to house the necessary Python packages, versions, and dependencies. These are listed in the `environment.yml` file. After you've forked and cloned this project to your local machine, you can recreate this environment in your default path by running the following command:
 
 ```bash
 conda env create –f environment.yml
@@ -21,4 +21,4 @@ To activate this environment, run:
 source activate bhtune
 ```
 
-This project also uses [FFmpeg](https://ffmpeg.org) software to convert video files to .WAV format.
+A non-Python requirement is the [FFmpeg](https://ffmpeg.org) software that's used to convert video files to .WAV format.
