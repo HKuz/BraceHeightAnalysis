@@ -21,7 +21,7 @@ def main():
             signal = spf.readframes(-1)
             signal = np.fromstring(signal, "Int16")
 
-            # Split the data into channels
+            # Split the data into channels [COMMENTED OUT]
             # channels = [[] for channel in range(spf.getnchannels())]
             # for index, datum in enumerate(signal):
             #     channels[index % len(channels)].append(datum)
