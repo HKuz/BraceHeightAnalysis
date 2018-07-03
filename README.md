@@ -1,6 +1,6 @@
 # Bow Brace Height Tuning Analysis
 
-This repository houses an analysis that compares the recorded sound differences shooting a traditional recurve bow at different brace heights within its recommended range.
+This project compares recorded sound differences shooting a traditional recurve bow at different brace heights within its recommended range.
 
 Brace height is the measurement from the deepest part of the riser's throat to the bow string. Typically, the bow's manufacturer includes a recommended range of brace heights for that given bow. Theoretically, there's an optimal distance that naturally sounds quieter than the others. This is different for every bow, and can be from person to person as well.
 
@@ -37,4 +37,4 @@ A non-Python requirement is the FFmpeg software that's used to convert video fil
 
 ## Results
 
-The plots showing the waveform from each video's sound track are stored in the `Plots` directory as `.pdf` files. A number of different brace heights generated plots with similar amplitudes, so there was no clear "winner". However, I chose the 8 1/8" measurement since it was consistently near the lowest values for each shot.
+The plots showing the waveform from each video's sound track are stored in the `Plots` directory as `.pdf` files. There's also a Jupyter notebook that re-creates the charts inline. A number of different brace heights generated plots with similar amplitudes, so there was no clear "winner". However, I chose the 8 1/8" measurement since it was consistently near the lowest values for each shot.
